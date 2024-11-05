@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Subscription Promo"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content jcr:primaryType="nt:unstructured"
+             sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured"
+                  sling:resourceType="granite/ui/components/coral/foundation/tabs">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties jcr:primaryType="nt:unstructured"
+                                jcr:title="Properties"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title jcr:primaryType="nt:unstructured"
+                                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                   fieldLabel="Title"
+                                   name="./title"
+                                   required="{Boolean}true"/>
+                            <description jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                         fieldLabel="Description"
+                                         name="./description"/>
+                            <emailLabel jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Email Label"
+                                        name="./emailLabel"
+                                        required="{Boolean}true"
+                                        value="Email"/>
+                            <privacyLabel jcr:primaryType="nt:unstructured"
+                                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                          fieldLabel="Privacy Label"
+                                          name="./privacyLabel"
+                                          value="View our Privacy"/>
+                            <privacyLink jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                         fieldLabel="Privacy Link"
+                                         name="./privacyLink"/>
+                            <registerCTA jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                         fieldLabel="Register CTA"
+                                         name="./registerCTA"
+                                         required="{Boolean}true"
+                                         value="Register"/>
+                            <expFragPath jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                         fieldLabel="Experience Fragment Path"
+                                         name="./expFragPath"/>
+                        </items>
+                    </properties>
+                    <fastSubscription jcr:primaryType="nt:unstructured"
+                                      jcr:title="Fast Subscription"
+                                      sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <subscriptionName jcr:primaryType="nt:unstructured"
+                                              sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                              fieldLabel="Subscription Name"
+                                              name="./subscriptionName"
+                                              required="{Boolean}true">
+                                <datasource jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="path/to/your/datasource/servlet"/>
+                            </subscriptionName>
+                        </items>
+                    </fastSubscription>
+                    <gatedContent jcr:primaryType="nt:unstructured"
+                                  jcr:title="Gated Content"
+                                  sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <assetType jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                       fieldLabel="Asset Type"
+                                       name="./assetType"
+                                       required="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <pdf jcr:primaryType="nt:unstructured"
+                                         text="PDF"
+                                         value="PDF"/>
+                                    <video jcr:primaryType="nt:unstructured"
+                                           text="VIDEO"
+                                           value="VIDEO"/>
+                                </items>
+                            </assetType>
+                            <pdfPath jcr:primaryType="nt:unstructured"
+                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathbrowser"
+                                     fieldLabel="PDF Path"
+                                     name="./pdfPath"/>
+                            <videoIds jcr:primaryType="nt:unstructured"
+                                      sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                      fieldLabel="Video IDs"
+                                      name="./videoIds">
+                                <datasource jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="path/to/your/video/datasource/servlet"/>
+                            </videoIds>
+                        </items>
+                    </gatedContent>
+                    <successMessage jcr:primaryType="nt:unstructured"
+                                    jcr:title="Success Message"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <overlayTitle jcr:primaryType="nt:unstructured"
+                                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                          fieldLabel="Overlay Title"
+                                          name="./overlayTitle"
+                                          required="{Boolean}true"/>
+                            <overlayDesc jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                         fieldLabel="Overlay Description"
+                                         name="./overlayDesc"/>
+                            <successCTA jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="CTA"
+                                        name="./successCTA"
+                                        required="{Boolean}true"/>
+                        </items>
+                    </successMessage>
+                    <loadingMessage jcr:primaryType="nt:unstructured"
+                                    jcr:title="Loading Message"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <loadingTitle jcr:primaryType="nt:unstructured"
+                                          sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                          fieldLabel="Overlay Title"
+                                          name="./loadingTitle"
+                                          required="{Boolean}true"/>
+                            <loadingDesc jcr:primaryType="nt:unstructured"
+                                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                         fieldLabel="Overlay Description"
+                                         name="./loadingDesc"/>
+                        </items>
+                    </loadingMessage>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
