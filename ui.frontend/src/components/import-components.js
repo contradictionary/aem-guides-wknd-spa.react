@@ -18,6 +18,7 @@ import withAsyncImport from "../utils/withAsyncImport";
 import "./Page/Page";
 import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
+import "./SubscriptionPromo/subscription-promo";
 
 import { MapTo } from "@adobe/aem-react-editable-components";
 
@@ -122,14 +123,3 @@ const TextEditConfig = {
 };
 
 MapTo("wknd-spa-react/components/text")(LazyTextComponent, TextEditConfig);
-
-const LazySubscriptionPromo = withAsyncImport(() =>
-  import(`./SubscriptionPromo/subscription-promo`)
-);
-
-MapTo("wknd-spa-react/components/subscription-promo", LazySubscriptionPromo, {
-  emptyLabel: "Subscription-Promo",
-  isEmpty: function (props) {
-    return !props || !props.title;
-  },
-});

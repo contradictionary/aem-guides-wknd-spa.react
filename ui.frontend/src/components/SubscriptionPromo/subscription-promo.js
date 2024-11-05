@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { MapTo } from "@adobe/aem-react-editable-components";
+
 import "./subscription-promo.css";
 import extractModelId from "../../utils/extract-model-id";
 class SubscriptionPromo extends Component {
@@ -169,5 +171,14 @@ class SubscriptionPromo extends Component {
     );
   }
 }
+const TextEditConfig = {
+  emptyLabel: "SubscriptionPromo",
 
-export default SubscriptionPromo;
+  isEmpty: function (props) {
+    return !props || !props.title || props.title.trim().length < 1;
+  },
+};
+export default MapTo("wknd-spa-react/components/subscriptionpromo")(
+  SubscriptionPromo,
+  TextEditConfig
+);
