@@ -11,7 +11,7 @@ const jsonContract = {
   emailMandatoryError: "Email is required",
   emailInvalidError: "Email is Invalid",
   pdfPath: "https://pdfobject.com/pdf/sample.pdf",
-  pdfthumb: "/thumb.png",
+  pdfThumbnail: "https://placehold.co/84x104?text=PDF%20Thumbnail",
   ctaText: "View",
 };
 
