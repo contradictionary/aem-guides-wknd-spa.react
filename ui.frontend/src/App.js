@@ -19,9 +19,8 @@ class App extends Page {
   render() {
     return (
       <div>
-        {this.childComponents}
-        {/* <SubscriptionPromo {...jsonContract} /> */}
-        {this.childPages}
+        { this.childComponents }
+        { this.childPages }
       </div>
     );
   }

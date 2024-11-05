@@ -37,6 +37,9 @@ class SubscriptionPromo extends Component {
       this.setState({ errors: { email: emailMandatoryError } });
     } else if (!this.validateEmail(email)) {
       this.setState({ errors: { email: emailInvalidError } });
+      this.setState({ errors: { email: emailMandatoryError } });
+    } else if (!this.validateEmail(email)) {
+      this.setState({ errors: { email: emailInvalidError } });
     } else {
       this.setState({ errors: {}, formVisible: true });
     }
