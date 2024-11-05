@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-require("./subscription-promo.css");
+import "./subscription-promo.css";
 
 const SubscriptionPromo = ({
   title,
@@ -8,7 +8,6 @@ const SubscriptionPromo = ({
   emailMandatoryError,
   emailInvalidError,
   pdfPath,
-  pdfthumb,
   ctaText,
 }) => {
   const [email, setEmail] = useState("");
@@ -22,143 +21,116 @@ const SubscriptionPromo = ({
     consent2: false,
   });
   const [errors, setErrors] = useState({});
+  const [subscribed, setSubscribed] = useState(false);
 
-  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    setErrors((prev) => ({ ...prev, email: "" }));
-  };
-
-  const handleFormChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-    setErrors((prev) => ({ ...prev, [name]: "" }));
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const handleEmailSubmit = () => {
-    if (!isValidEmail(email)) {
-      setErrors((prev) => ({ ...prev, email: emailInvalidError }));
-      return;
+    if (!email) {
+      setErrors({ email: emailMandatoryError });
+    } else if (!validateEmail(email)) {
+      setErrors({ email: emailInvalidError });
+    } else {
+      setErrors({});
+      setFormVisible(true);
     }
-    setFormVisible(true);
   };
 
   const handleFormSubmit = () => {
-    const newErrors = {};
-    if (!formData.firstName) newErrors.firstName = "First name is required";
-    if (!formData.lastName) newErrors.lastName = "Last name is required";
-    if (!formData.country) newErrors.country = "Country is required";
-    if (!formData.consent1 && !formData.consent2)
-      newErrors.consent = "At least one consent is required";
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
+    const { firstName, lastName, country } = formData;
+    if (firstName && lastName && country) {
+      setSubscribed(true);
+      window.open(pdfPath, "_blank");
+    } else {
+      setErrors({ form: "Please fill out all required fields." });
     }
-
-    console.log("Form submitted", formData);
-    window.open(pdfPath, "_blank");
   };
 
   return (
-    <div className="cmp-subscription-promo" data-theme="light">
-      {!formVisible ? (
-        <div className="cmp-subscription-promo__initial-view">
+    <div className="cmp-subscription-promo">
+      {!formVisible && !subscribed && (
+        <div className="cmp-subscription-promo__email">
           <h2>{title}</h2>
           <p>{description}</p>
           <input
             type="email"
             placeholder={emailLabel}
             value={email}
-            onChange={handleEmailChange}
-            aria-label={emailLabel}
+            onChange={(e) => setEmail(e.target.value)}
+            aria-required="true"
           />
           {errors.email && <span className="error">{errors.email}</span>}
-          <button onClick={handleEmailSubmit} disabled={!isValidEmail(email)}>
-            {ctaText}
-          </button>
+          <button onClick={handleEmailSubmit}>{ctaText}</button>
+          <p className="privacy-link">View our Privacy</p>
         </div>
-      ) : (
+      )}
+      {formVisible && !subscribed && (
         <div className="cmp-subscription-promo__form">
-          <h2>You're almost done!</h2>
           <input
             type="text"
-            name="firstName"
-            placeholder="First name"
+            placeholder="First Name"
             value={formData.firstName}
-            onChange={handleFormChange}
-            aria-label="First name"
+            onChange={(e) =>
+              setFormData({ ...formData, firstName: e.target.value })
+            }
+            aria-required="true"
           />
-          {errors.firstName && <span className="error">{errors.firstName}</span>}
           <input
             type="text"
-            name="lastName"
-            placeholder="Last name"
+            placeholder="Last Name"
             value={formData.lastName}
-            onChange={handleFormChange}
-            aria-label="Last name"
+            onChange={(e) =>
+              setFormData({ ...formData, lastName: e.target.value })
+            }
+            aria-required="true"
           />
-          {errors.lastName && <span className="error">{errors.lastName}</span>}
           <input
             type="text"
-            name="country"
             placeholder="Country/Location"
             value={formData.country}
-            onChange={handleFormChange}
-            aria-label="Country/Location"
+            onChange={(e) =>
+              setFormData({ ...formData, country: e.target.value })
+            }
+            aria-required="true"
           />
-          {errors.country && <span className="error">{errors.country}</span>}
           <input
             type="text"
-            name="company"
             placeholder="Company (Optional)"
             value={formData.company}
-            onChange={handleFormChange}
-            aria-label="Company"
+            onChange={(e) =>
+              setFormData({ ...formData, company: e.target.value })
+            }
           />
           <label>
             <input
               type="checkbox"
-              name="consent1"
               checked={formData.consent1}
-              onChange={handleFormChange}
+              onChange={(e) =>
+                setFormData({ ...formData, consent1: e.target.checked })
+              }
             />
-            By checking this box you consent to KPMG sending you insights, event
-            invitations and other benefits via email.
+            Consent to receive insights
           </label>
           <label>
             <input
               type="checkbox"
-              name="consent2"
               checked={formData.consent2}
-              onChange={handleFormChange}
+              onChange={(e) =>
+                setFormData({ ...formData, consent2: e.target.checked })
+              }
             />
-            By checking this box you consent to KPMG sending you insights, event
-            invitations and other benefits via email.
+            Consent to receive event invitations
           </label>
-          {errors.consent && <span className="error">{errors.consent}</span>}
-          <div className="privacy-notice">
-            You will receive an email after registration to activate your
-            account and set up your preferences for content personalization,
-            additional subscriptions, opting out of email communications and
-            deleting your account any time after registration. Your information
-            will be processed in accordance with our Privacy Notice.
-          </div>
-          <button
-            onClick={handleFormSubmit}
-            disabled={
-              !formData.firstName ||
-              !formData.lastName ||
-              !formData.country ||
-              (!formData.consent1 && !formData.consent2)
-            }
-          >
-            Subscribe
-          </button>
+          {errors.form && <span className="error">{errors.form}</span>}
+          <button onClick={handleFormSubmit}>Subscribe</button>
+        </div>
+      )}
+      {subscribed && (
+        <div className="cmp-subscription-promo__success">
+          <p>Thank you for subscribing! Your PDF is now available.</p>
         </div>
       )}
     </div>

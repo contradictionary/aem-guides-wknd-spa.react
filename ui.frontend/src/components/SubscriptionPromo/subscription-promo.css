@@ -1,60 +1,45 @@
-:root {
-  --primary-color: #0070f3;
-  --background-color: #fff;
-  --text-color: #333;
-}
-
-[data-theme='dark'] {
-  --primary-color: #1e1e1e;
-  --background-color: #333;
-  --text-color: #fff;
-}
-
 .cmp-subscription-promo {
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   padding: 20px;
   border-radius: 8px;
+  color: white;
   max-width: 600px;
   margin: auto;
 }
 
-.cmp-subscription-promo__initial-view,
+.cmp-subscription-promo__email,
 .cmp-subscription-promo__form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
 }
 
-.cmp-subscription-promo input,
-.cmp-subscription-promo button {
-  margin: 10px 0;
+.cmp-subscription-promo__email input,
+.cmp-subscription-promo__form input {
   padding: 10px;
-  width: 100%;
-  max-width: 300px;
+  border-radius: 4px;
+  border: none;
 }
 
-.cmp-subscription-promo button {
-  background-color: var(--primary-color);
-  color: #fff;
+.cmp-subscription-promo__email button,
+.cmp-subscription-promo__form button {
+  background-color: #ffffff;
+  color: #2575fc;
+  padding: 10px;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
 }
 
-.error {
-  color: red;
-  font-size: 0.8em;
+.privacy-link {
+  font-size: 12px;
+  color: #ffffff;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .cmp-subscription-promo {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 1024px) {
-  .cmp-subscription-promo {
-    max-width: 800px;
+    max-width: 100%;
   }
 }
