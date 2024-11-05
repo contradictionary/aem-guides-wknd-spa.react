@@ -121,3 +121,4 @@ ui.frontend/env-config.js
 ui.frontend/mockapi/mock-storage/*
 ui.frontend/node
 prompt/
+Prompt.txt

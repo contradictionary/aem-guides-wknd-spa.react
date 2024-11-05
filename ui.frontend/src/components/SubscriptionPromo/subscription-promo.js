@@ -8,6 +8,7 @@ const SubscriptionPromo = ({
   emailMandatoryError,
   emailInvalidError,
   pdfPath,
+  pdfThumbnail,
   ctaText,
 }) => {
   const [email, setEmail] = useState("");
@@ -53,7 +54,14 @@ const SubscriptionPromo = ({
     <div className="cmp-subscription-promo">
       {!formVisible && !subscribed && (
         <div className="cmp-subscription-promo__email">
-          <h2>{title}</h2>
+          <div style={{display:'flex',gap:'1rem'}}>
+            <img
+              src={pdfThumbnail}
+              alt="PDF Thumbnail"
+              className="pdf-thumbnail"
+            />
+            <h2>{title}</h2>
+          </div>
           <p>{description}</p>
           <input
             type="email"
