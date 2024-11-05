@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/css/main.2d1a4553.css",
+    "main.js": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/main.e0e13c72.js",
+    "static/css/204.3497b4b8.chunk.css": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/css/204.3497b4b8.chunk.css",
+    "static/js/204.31825140.chunk.js": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/204.31825140.chunk.js",
+    "static/js/859.2b64d1b0.chunk.js": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/859.2b64d1b0.chunk.js",
+    "static/js/954.6e39767f.chunk.js": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/954.6e39767f.chunk.js",
+    "static/js/151.e403f65b.chunk.js": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/151.e403f65b.chunk.js",
+    "index.html": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/index.html",
+    "static/media/index.cjs": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/media/index.cd351d7c31d0d3fccf96.cjs",
+    "main.2d1a4553.css.map": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/css/main.2d1a4553.css.map",
+    "main.e0e13c72.js.map": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/main.e0e13c72.js.map",
+    "204.3497b4b8.chunk.css.map": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/css/204.3497b4b8.chunk.css.map",
+    "204.31825140.chunk.js.map": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/204.31825140.chunk.js.map",
+    "859.2b64d1b0.chunk.js.map": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/859.2b64d1b0.chunk.js.map",
+    "954.6e39767f.chunk.js.map": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/954.6e39767f.chunk.js.map",
+    "151.e403f65b.chunk.js.map": "/etc.clientlibs/wknd-spa-react/clientlibs/clientlib-react/resources/static/js/151.e403f65b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d1a4553.css",
+    "static/js/main.e0e13c72.js"
+  ]
+}
