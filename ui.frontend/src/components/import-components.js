@@ -52,7 +52,6 @@ import {
   ListV2,
   ListV2IsEmptyFn,
 } from "@adobe/aem-core-components-react-base";
-import SubscriptionPromo from "./SubscriptionPromo/subscription-promo";
 
 //lazyload / code splitting example of an internal component
 const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
@@ -124,7 +123,13 @@ const TextEditConfig = {
 
 MapTo("wknd-spa-react/components/text")(LazyTextComponent, TextEditConfig);
 
-MapTo("wknd-spa-react/components/subscription-promo", SubscriptionPromo, {
+const LazySubscriptionPromo = withAsyncImport(() =>
+  import(`./SubscriptionPromo/subscription-promo`)
+);
+
+MapTo("wknd-spa-react/components/subscription-promo", LazySubscriptionPromo, {
   emptyLabel: "Subscription-Promo",
-  isEmpty: (props) => !props.title,
+  isEmpty: function (props) {
+    return !props || !props.title;
+  },
 });
