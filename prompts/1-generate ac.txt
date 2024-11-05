@@ -1,0 +1,5 @@
+Name: [ ] Assign a suitable name for the component
+Attachment: [ ] Attach the component designs in any of the image format.
+Description: 
+List down the detailed acceptance criteria for the web component shown in the screenshot. [Provide a brief overview of the component’s
+purpose and functionality.]

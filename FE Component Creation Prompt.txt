@@ -1,0 +1,37 @@
+FE Component Creation Prompt Template for Decoupled
+Architecture
+Standard Inputs: Acceptance Criteria, JSON contract, Component Designs (image format)
+Note: The AEM Prompt JSON Contract FE team
+will execute first to provide the . This data will then be leveraged by the to create React component.
+Prompt 1 – Creating Acceptance Criteria:
+
+Name: [ ] Assign a suitable name for the component
+Attachment: [ ] Attach the component designs in any of the image format.
+Description: 
+List down the detailed acceptance criteria for the web component shown in the screenshot. [Provide a brief overview of the component’s
+purpose and functionality.]
+
+
+Prompt 2 – Create React component with Standard Inputs
+Description: Build a react component "[ NAME
+]" as attached in the screenshots. Use the attached JSON contract and following ACs to understand the
+props of the component. Define the prop types for all props. Generate complete CSS that matches exactly with the provided design. Create CSS for the
+component in BEM naming format. [ Add project theme if applicable
+]. Ensure the component is fully responsive on various devices. Also follow the
+Accessibility standards mentioned below
+[(Refined) ACs given by Slingshot]
+Accessibility standards:
+WCAG Compliance: Ensure compliance with WCAG standards.
+Keyboard Navigation: All interactive elements must be accessible via keyboard.
+Screen Reader Support: Use semantic HTML and ARIA roles.
+Performance (Optional): [ ]
+Use lazyload if needed
+Prompt 3 – Code Optimisation
+Description: Refactor the selected code
+Optimise the code using ESLint and SonarLint standards. (if applicable)
+Prompt 4 – Storybook for the Component
+Description: Create storybook for the selected code
+Prompt 5 :
+Description: Write unit tests for the code using [ JS Unit testing framework
+] and based on the provided code if needed please utilize additional supporting
+libraries from to provide unit test cases for the code.

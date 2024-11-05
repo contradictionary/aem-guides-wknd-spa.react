@@ -1,0 +1,17 @@
+Description: Build a react component "[ NAME]" as attached in the screenshots.
+Use the attached JSON contract and following ACs to understand the props of the component.
+Define the prop types for all props.
+Generate complete CSS that matches exactly with the provided design.
+Create CSS for the component in BEM naming format.[ Add project theme if applicable].
+Ensure the component is fully responsive on various devices. 
+Also follow the Accessibility standards mentioned below
+
+[(Refined) ACs given by Slingshot]
+
+Accessibility standards:
+WCAG Compliance: Ensure compliance with WCAG standards.
+Keyboard Navigation: All interactive elements must be accessible via keyboard.
+Screen Reader Support: Use semantic HTML and ARIA roles.
+
+Performance (Optional): [ ]
+Use lazyload if needed

@@ -1,0 +1,4 @@
+Description: 
+Write unit tests for the code using [ JS Unit testing framework] and based on
+the provided code if needed please utilize additional supporting libraries from
+to provide unit test cases for the code.
