@@ -96,7 +96,6 @@ Import-Package: javax.annotation;version=0.0.0,com.day.cq.wcm.api;version=1.13.0
             <scope>test</scope>
         </dependency>
 
-
         <!-- Testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -138,6 +137,12 @@ Import-Package: javax.annotation;version=0.0.0,com.day.cq.wcm.api;version=1.13.0
             <groupId>org.apache.sling</groupId>
             <artifactId>org.apache.sling.models.impl</artifactId>
             <version>1.4.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

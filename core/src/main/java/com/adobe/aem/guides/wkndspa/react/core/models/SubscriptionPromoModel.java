@@ -18,6 +18,9 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 public class SubscriptionPromoModel implements ComponentExporter {
 
     @ValueMapValue
+    private String formType;
+
+    @ValueMapValue
     private String title;
 
     @ValueMapValue
@@ -51,6 +54,9 @@ public class SubscriptionPromoModel implements ComponentExporter {
     private String videoIds;
 
     @ValueMapValue
+    private String eventExpiredMsg;
+
+    @ValueMapValue
     private String overlayTitle;
 
     @ValueMapValue
@@ -64,6 +70,10 @@ public class SubscriptionPromoModel implements ComponentExporter {
 
     @ValueMapValue
     private String loadingDesc;
+
+    public String getFormType() {
+        return formType;
+    }
 
     public String getTitle() {
         return title != null ? title : "Default Title";
@@ -119,6 +129,10 @@ public class SubscriptionPromoModel implements ComponentExporter {
 
     public String getSuccessCTA() {
         return successCTA != null ? successCTA : "Default Success CTA";
+    }
+
+    public String getEventExpiredMsg() {
+        return eventExpiredMsg != null ? successCTA : "Event expired";
     }
 
     public String getLoadingTitle() {
