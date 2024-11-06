@@ -81,7 +81,7 @@ export default class SubscriptionPromo extends Component {
       privacyLink,
       registerCTA,
       pdfPath,
-      pdfThumbnail,
+      pdfThumbnail="https://placehold.co/84x104?text=PDF%20Thumbnail",
       successCTA,
       loadingTitle,
       loadingDesc
