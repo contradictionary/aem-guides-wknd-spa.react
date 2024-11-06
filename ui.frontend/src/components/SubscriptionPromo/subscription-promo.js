@@ -114,7 +114,7 @@ export default class SubscriptionPromo extends Component {
             />
             {errors.email && <span className="error">{errors.email}</span>}
             <button onClick={this.handleEmailSubmit}>{registerCTA}</button>
-            <p className="privacy-link">{privacyLabel} <a href={privacyLink}>View our Privacy</a></p>
+            <p className="privacy-link">{privacyLabel}<a href={privacyLink}></a></p>
           </div>
         )}
         {formVisible && !subscribed && (
@@ -168,8 +168,17 @@ export default class SubscriptionPromo extends Component {
         )}
         {subscribed && (
           <div className="cmp-subscription-promo__success">
-            <p>{overlayTitle}</p>
-            <p>{overlayDesc}</p>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <img
+                src={pdfThumbnail}
+                alt="PDF Thumbnail"
+                className="pdf-thumbnail"
+              />
+              <div>
+                <h2>{overlayTitle}</h2>
+                <p>{overlayDesc}</p>
+              </div>
+            </div>
           </div>
         )}
       </div>
