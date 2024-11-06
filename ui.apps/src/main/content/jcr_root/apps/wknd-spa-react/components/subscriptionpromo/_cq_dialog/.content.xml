@@ -5,7 +5,6 @@
           jcr:primaryType="nt:unstructured"
           jcr:title="Subscription Promo"
           sling:resourceType="cq/gui/components/authoring/dialog">
-
     <content jcr:primaryType="nt:unstructured"
              sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
@@ -16,6 +15,23 @@
                                 jcr:title="Properties"
                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
+                            <formType jcr:primaryType="nt:unstructured"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                       fieldLabel="Form Type"
+                                       name="./formType"
+                                       required="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <fastSubscription jcr:primaryType="nt:unstructured"
+                                         text="Fast Subscription"
+                                         value="fastSubscription"/>
+                                    <gatedContent jcr:primaryType="nt:unstructured"
+                                           text="Gated Content"
+                                           value="gatedContent"/>
+                                    <eventRegistration jcr:primaryType="nt:unstructured"
+                                           text="Event Registration"
+                                           value="eventRegistration"/>       
+                                </items>
+                            </formType>
                             <title jcr:primaryType="nt:unstructured"
                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                    fieldLabel="Title"
@@ -56,13 +72,14 @@
                                       jcr:title="Fast Subscription"
                                       sling:resourceType="granite/ui/components/coral/foundation/container">
                         <items jcr:primaryType="nt:unstructured">
-                            <subscriptionName jcr:primaryType="nt:unstructured"
-                                              sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                              fieldLabel="Subscription Name"
-                                              name="./subscriptionName"
-                                              required="{Boolean}true">
-                                <datasource jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="path/to/your/datasource/servlet"/>
+                            <subscriptionName
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Subscription Name"
+                                name="./subscriptionName">
+                                <datasource
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="/bin/myproject/subscription"/>
                             </subscriptionName>
                         </items>
                     </fastSubscription>
@@ -93,10 +110,20 @@
                                       fieldLabel="Video IDs"
                                       name="./videoIds">
                                 <datasource jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="path/to/your/video/datasource/servlet"/>
+                                            sling:resourceType="/bin/myproject/video"/>
                             </videoIds>
                         </items>
                     </gatedContent>
+                    <eventRegistrationTab jcr:primaryType="nt:unstructured"
+                            jcr:title="Event Registration"
+                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <eventExpiredMsg jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Event Expired Message"
+                                name="./eventExpiredMsg"/>
+                        </items>
+                    </eventRegistrationTab>
                     <successMessage jcr:primaryType="nt:unstructured"
                                     jcr:title="Success Message"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
