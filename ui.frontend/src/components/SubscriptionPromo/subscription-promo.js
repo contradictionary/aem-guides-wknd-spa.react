@@ -84,7 +84,9 @@ export default class SubscriptionPromo extends Component {
       pdfThumbnail="https://placehold.co/84x104?text=PDF%20Thumbnail",
       successCTA,
       loadingTitle,
-      loadingDesc
+      loadingDesc,
+      overlayTitle,
+      overlayDesc
     } = this.props;
     const { email, formVisible, formData, errors, subscribed } = this.state;
 
@@ -166,7 +168,8 @@ export default class SubscriptionPromo extends Component {
         )}
         {subscribed && (
           <div className="cmp-subscription-promo__success">
-            <p>{successCTA} Your PDF is now available.</p>
+            <p>{overlayTitle}</p>
+            <p>{overlayDesc}</p>
           </div>
         )}
       </div>

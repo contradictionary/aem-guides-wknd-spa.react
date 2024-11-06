@@ -2,11 +2,23 @@ package com.adobe.aem.guides.wkndspa.react.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.granite.asset.api.Asset;
+import com.day.cq.dam.commons.util.DamUtil;
+
+import java.util.Optional;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Model(
     adaptables = SlingHttpServletRequest.class,
@@ -16,6 +28,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 )
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class SubscriptionPromoModel implements ComponentExporter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SubscriptionPromoModel.class);
 
     @ValueMapValue
     private String formType;
@@ -70,6 +84,9 @@ public class SubscriptionPromoModel implements ComponentExporter {
 
     @ValueMapValue
     private String loadingDesc;
+
+    @SlingObject
+    private ResourceResolver resourceResolver;
 
     public String getFormType() {
         return formType;
@@ -141,6 +158,24 @@ public class SubscriptionPromoModel implements ComponentExporter {
 
     public String getLoadingDesc() {
         return loadingDesc != null ? loadingDesc : "Default Loading Description";
+    }
+
+    public String getPdfThumbnail() {
+        if (StringUtils.isNotBlank(pdfPath)) {
+            Resource pdfResource = resourceResolver.getResource(pdfPath);
+            if (pdfResource != null && DamUtil.isAsset(pdfResource)) {
+                Asset asset = pdfResource.adaptTo(Asset.class);
+                if (asset != null) {
+                    LOGGER.info("thumbnail path {}",Optional.ofNullable(asset.getRendition("cq5dam.thumbnail.319.319.png"))
+                    .map(rendition -> rendition.getPath())
+                    .orElse(StringUtils.EMPTY));
+                    return Optional.ofNullable(asset.getRendition("cq5dam.thumbnail.319.319.png"))
+                            .map(rendition -> rendition.getPath())
+                            .orElse(StringUtils.EMPTY);
+                }
+            }
+        }
+        return StringUtils.EMPTY;
     }
 
     @Override
