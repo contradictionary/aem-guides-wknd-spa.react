@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './subscription-promo.css';
 import { MapTo } from '@adobe/aem-react-editable-components';
- 
+
 export const SubscriptionPromoConfig = {
   emptyLabel: 'Subscription Promo',
 
   isEmpty: function(props) {
-      return !props || !props.message || props.message.trim().length < 1;
+    return !props || !props.title || props.title.trim().length < 1;
   }
 };
 
@@ -28,20 +28,20 @@ export default class SubscriptionPromo extends Component {
       subscribed: false,
     };
   }
- 
+
   validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
- 
+
   handleEmailChange = (e) => {
     this.setState({ email: e.target.value });
   };
- 
+
   handleEmailSubmit = () => {
     const { email } = this.state;
     const { emailMandatoryError, emailInvalidError } = this.props;
- 
+
     if (!email) {
       this.setState({ errors: { email: emailMandatoryError } });
     } else if (!this.validateEmail(email)) {
@@ -50,7 +50,7 @@ export default class SubscriptionPromo extends Component {
       this.setState({ errors: {}, formVisible: true });
     }
   };
- 
+
   handleFormChange = (field, value) => {
     this.setState((prevState) => ({
       formData: {
@@ -59,11 +59,11 @@ export default class SubscriptionPromo extends Component {
       },
     }));
   };
- 
+
   handleFormSubmit = () => {
     const { firstName, lastName, country } = this.state.formData;
     const { pdfPath } = this.props;
- 
+
     if (firstName && lastName && country) {
       this.setState({ subscribed: true });
       window.open(pdfPath, '_blank');
@@ -71,11 +71,23 @@ export default class SubscriptionPromo extends Component {
       this.setState({ errors: { form: 'Please fill out all required fields.' } });
     }
   };
- 
+
   render() {
-    const { title, description, emailLabel, ctaText, pdfThumbnail } = this.props;
+    const {
+      title,
+      description,
+      emailLabel,
+      privacyLabel,
+      privacyLink,
+      registerCTA,
+      pdfPath,
+      pdfThumbnail="https://placehold.co/84x104?text=PDF%20Thumbnail",
+      successCTA,
+      loadingTitle,
+      loadingDesc
+    } = this.props;
     const { email, formVisible, formData, errors, subscribed } = this.state;
- 
+
     return (
       <div className="cmp-subscription-promo">
         {!formVisible && !subscribed && (
@@ -99,8 +111,8 @@ export default class SubscriptionPromo extends Component {
               aria-required="true"
             />
             {errors.email && <span className="error">{errors.email}</span>}
-            <button onClick={this.handleEmailSubmit}>{ctaText}</button>
-            <p className="privacy-link">View our Privacy</p>
+            <button onClick={this.handleEmailSubmit}>{registerCTA}</button>
+            <p className="privacy-link">{privacyLabel} <a href={privacyLink}>View our Privacy</a></p>
           </div>
         )}
         {formVisible && !subscribed && (
@@ -154,13 +166,13 @@ export default class SubscriptionPromo extends Component {
         )}
         {subscribed && (
           <div className="cmp-subscription-promo__success">
-            <p>Thank you for subscribing! Your PDF is now available.</p>
+            <p>{successCTA} Your PDF is now available.</p>
           </div>
         )}
       </div>
     );
   }
 }
- 
+
 // Map the component to the AEM resource type
 MapTo('wknd-spa-react/components/subscriptionpromo')(SubscriptionPromo, SubscriptionPromoConfig);

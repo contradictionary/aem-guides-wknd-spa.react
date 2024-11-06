@@ -31,6 +31,7 @@ class Text extends Component {
       <div
         id={extractModelId(this.props.cqPath)}
         data-rte-editelement
+        className='cmp-text'
         dangerouslySetInnerHTML={{
           __html: sanitizeHtml(this.props.text, sanitizeWhiteList)
         }}
